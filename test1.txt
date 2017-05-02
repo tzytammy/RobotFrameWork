@@ -1,0 +1,9 @@
+*** Settings ***
+Library           DatabaseLibrary
+
+*** Test Cases ***
+decodearset='utf8'
+    Connect to database using custom params    pymysql    host='10.64.85.37',port=3306,user='root',passwd='123456',database='twcrm',charset='utf8'
+    ${a}    query    select * from qy_user
+    ${b}    decode    ${a[1][1]}
+    Disconnect From Database
